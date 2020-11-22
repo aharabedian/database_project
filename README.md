@@ -8,6 +8,7 @@ The goal of this project is to extend the CraveOnCampus database by adding a dri
 This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 
 ## Use Case
+![Use Case Image](https://github.com/aharabedian/database_project/blob/main/ITSC%203160%20Use%20Case.png)
 
 ## Business Rules
 * Customers can leave ratings for every order.
