@@ -31,3 +31,14 @@ This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 ![ERD Image](https://github.com/aharabedian/database_project/blob/main/ERD.png)
 
 ## Data Dictionary
+
+### Table: rating
+|       Name      |   Data Type  | Nullable |  PK |  FK | Default |
+|:---------------:|:------------:|:--------:|:---:|:---:|:-------:|
+| rating_id       | INT(11)      | Yes      | Yes | No  |         |
+| resturant_score | TINYINT      | No       | No  | No  | NULL    |
+| driver_score    | TINYINT      | No       | No  | No  | NULL    |
+| comment         | VARCHAR(255) | No       | No  | No  | NULL    |
+| order_id        | INT(11)      | Yes      | No  | Yes |         |
+| restaurant_id   | INT(11)      | Yes      | No  | Yes |         |
+| driver_id       | INT(11)      | Yes      | No  | Yes |         |
