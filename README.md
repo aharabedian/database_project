@@ -30,7 +30,7 @@ This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 ## ERD
 ![ERD Image](https://github.com/aharabedian/database_project/blob/main/ERD.png)
 
-## Data Dictionary
+## Data Dictionary for New Tables
 
 ### Table: rating
 |       Name      |   Data Type  | Nullable |  PK |  FK | Default |
@@ -42,3 +42,5 @@ This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 | order_id        | INT(11)      | Yes      | No  | Yes |         |
 | restaurant_id   | INT(11)      | Yes      | No  | Yes |         |
 | driver_id       | INT(11)      | Yes      | No  | Yes |         |
+
+### ![Click Here for Full Data Dictionary](https://github.com/aharabedian/database_project/blob/main/data_dictionary.pdf)
