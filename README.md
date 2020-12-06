@@ -44,3 +44,5 @@ This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 | driver_id       | INT(11)      | Yes      | No  | Yes |         |
 
 ### ![Click Here for Full Data Dictionary](https://github.com/aharabedian/database_project/blob/main/data_dictionary.pdf)
+
+## ![SQL Dump Script](https://github.com/aharabedian/database_project/blob/main/Updated_Campus_Eats_Data_Dump.sql)
