@@ -63,3 +63,15 @@ This procedure calculates the average rating for each driver. It displays the ra
 This procedure adds a rating to an order. It takes the order ID and uses it to look up the fields required to link a rating to the driver and restaurant.
 
 ![Add Rating](https://github.com/aharabedian/database_project/blob/main/AddRating.png)
+
+## Custom Views
+
+### Bad Orders
+This view shows all orders with a driver or restaurant score below 3.0. It includes the order price, restaurant and driver scores and restaurant and driver names. This view can be used to find consistendly underperforming drivers or restaurants. It is sorted by driver score as this is what can be most easily fixed.
+
+![Bad Orders](https://github.com/aharabedian/database_project/blob/main/BadOrders.png)
+
+### Good Orders
+This view shows all orders with a driver and restaurant score above 3.0. It includes the order price, restaurant and driver scores and restaurant and driver names. This view can be used to find restaurants and drivers that consisntently provide good experiences to customers.
+
+![Good Orders](https://github.com/aharabedian/database_project/blob/main/GoodOrders.png)
