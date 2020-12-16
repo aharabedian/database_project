@@ -18,6 +18,22 @@ USE `Campus_Eats_Fall2020`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Temporary view structure for view `bad_orders`
+--
+
+DROP TABLE IF EXISTS `bad_orders`;
+/*!50001 DROP VIEW IF EXISTS `bad_orders`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `bad_orders` AS SELECT 
+ 1 AS `Price`,
+ 1 AS `Restaurant Rating`,
+ 1 AS `Driver Rating`,
+ 1 AS `Driver Name`,
+ 1 AS `Restaurant`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `delivery`
 --
 
@@ -104,6 +120,22 @@ LOCK TABLES `faculty` WRITE;
 INSERT INTO `faculty` VALUES (1,8,'Assistant Professor','UF','PhD'),(2,11,'Professor','SJSU','Master'),(3,21,'Adjunct Professor','UNCC','Master'),(4,16,'Assistant Professor','UF','Bachelor'),(5,6,'Assistant Professor','Yale','Master'),(6,4,'Professor','CMU','PhD'),(7,15,'Assistant Professor','Duke','PhD'),(8,12,'Professor','NCSU','Master'),(9,10,'Adjunct Professor','Stanford','Bachelor'),(10,7,'Assistant Professor','Duke','PhD'),(11,14,'Assistant Professor','CMU','Bachelor'),(12,3,'Adjunct Professor','UNCC','Bachelor'),(13,1,'Assistant Professor','Harvard','Bachelor'),(14,22,'Assistant Professor','NCSU','PhD'),(15,9,'Assistant Professor','Harvard','Bachelor'),(16,25,'Adjunct Professor','Harvard','Bachelor'),(17,17,'Adjunct Professor','Stanford','Master'),(18,18,'Assistant Professor','UNCC','PhD'),(19,24,'Assistant Professor','CMU','Bachelor'),(20,23,'Adjunct Professor','Stanford','PhD'),(21,19,'Assistant Professor','CMU','PhD'),(22,20,'Professor','Stanford','PhD'),(23,13,'Adjunct Professor','NCSU','PhD'),(24,2,'Assistant Professor','Duke','Master'),(25,5,'Adjunct Professor','SJSU','Master'),(26,205,'Assistant Professor','UCLA','PhD');
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `good_orders`
+--
+
+DROP TABLE IF EXISTS `good_orders`;
+/*!50001 DROP VIEW IF EXISTS `good_orders`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `good_orders` AS SELECT 
+ 1 AS `Price`,
+ 1 AS `Restaurant Rating`,
+ 1 AS `Driver Rating`,
+ 1 AS `Driver Name`,
+ 1 AS `Restaurant`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `location`
@@ -257,8 +289,8 @@ DROP TABLE IF EXISTS `rating`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rating` (
-  `rating_id` int NOT NULL,
-  `resturant_score` tinyint DEFAULT NULL,
+  `rating_id` int NOT NULL AUTO_INCREMENT,
+  `restaurant_score` tinyint DEFAULT NULL,
   `driver_score` tinyint DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `order_id` int NOT NULL,
@@ -271,7 +303,7 @@ CREATE TABLE `rating` (
   CONSTRAINT `fk_rating_driver1` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
   CONSTRAINT `fk_rating_order1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
   CONSTRAINT `fk_rating_restaurant1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +312,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,4,2,'sed dolor. Fusce mi lorem,',1,3,4),(2,1,4,'libero at auctor ullamcorper, nisl arcu',2,84,3),(3,4,3,'sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor,',3,81,6),(4,2,3,'vel est',4,47,6),(5,3,3,'mollis lectus pede et',5,93,8),(6,2,1,'malesuada id,',6,38,1),(7,2,5,'mauris sit amet lorem semper auctor.',7,87,6),(8,5,5,'Maecenas iaculis aliquet diam. Sed diam lorem,',8,19,2),(9,4,4,'lobortis ultrices. Vivamus',9,87,4),(10,3,3,'primis in faucibus',10,27,2),(11,3,3,'enim non nisi. Aenean eget metus. In nec orci. Donec',11,82,8),(12,1,5,'fringilla cursus purus. Nullam scelerisque',12,45,7),(13,4,2,'eros nec tellus. Nunc lectus',13,33,7),(14,2,5,'nibh enim, gravida sit amet,',14,83,8),(15,1,3,'mauris sapien, cursus in, hendrerit consectetuer, cursus et,',15,22,3),(16,2,5,'non, cursus',16,87,8),(17,5,5,'Fusce mollis. Duis sit amet diam',17,32,3),(18,5,1,'Vestibulum ante',18,76,3),(19,5,3,'at pretium aliquet, metus urna convallis erat,',19,59,7),(20,5,3,'sit amet risus.',20,90,7),(21,3,5,'risus. Nulla',21,60,3),(22,2,2,'nonummy ac, feugiat non, lobortis quis, pede.',22,68,8),(23,2,1,'nunc risus varius orci,',23,30,3),(24,5,2,'sem egestas blandit. Nam nulla magna, malesuada',24,72,2),(25,3,1,'facilisis facilisis, magna tellus faucibus leo, in lobortis tellus',25,68,7),(26,5,3,'morbi tristique senectus et netus et malesuada fames ac turpis',26,19,1),(27,5,1,'magna. Cras convallis convallis dolor. Quisque tincidunt',27,6,8),(28,3,1,'varius. Nam',28,49,3),(29,3,1,'eros turpis non enim. Mauris',29,93,2),(30,3,4,'commodo tincidunt nibh. Phasellus nulla.',30,96,6),(31,1,3,'lobortis tellus justo sit',31,32,1),(32,4,1,'Sed eget lacus. Mauris non dui nec urna',32,88,5),(33,1,1,'vehicula',33,23,6),(34,2,5,'nunc sed',34,53,4),(35,5,4,'lacinia. Sed congue, elit sed consequat auctor, nunc',35,30,6),(36,3,3,'est. Mauris eu turpis. Nulla aliquet. Proin velit.',36,64,4),(37,2,2,'Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit',37,21,2),(38,5,3,'tellus. Nunc lectus pede, ultrices a,',38,30,8),(39,5,3,'blandit',39,24,3),(40,3,3,'magna nec quam. Curabitur',40,52,8),(41,4,1,'lorem ipsum sodales purus, in',41,77,1),(42,5,5,'Maecenas libero est, congue a, aliquet vel, vulputate eu,',42,36,4),(43,2,5,'primis in faucibus orci luctus et ultrices',43,39,6),(44,3,4,'quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis.',44,57,2),(45,5,4,'nunc. In at',45,77,4),(46,3,3,'purus.',46,10,3),(47,2,4,'commodo hendrerit. Donec porttitor tellus non magna.',47,69,6),(48,3,5,'porttitor eros nec tellus. Nunc lectus pede, ultrices',48,93,8),(49,4,2,'adipiscing lacus. Ut nec urna',49,2,8),(50,4,4,'gravida mauris ut mi. Duis risus odio, auctor',50,90,1),(51,5,1,'Fusce aliquet magna a neque.',51,73,7),(52,2,3,'dapibus',52,49,1),(53,1,2,'quam. Pellentesque habitant morbi tristique senectus et netus et',53,75,7),(54,2,3,'enim mi tempor lorem, eget mollis lectus',54,6,7),(55,2,2,'blandit mattis. Cras eget',55,70,1),(56,3,1,'lobortis risus. In mi pede,',56,86,1),(57,4,5,'lorem tristique aliquet.',57,15,6),(58,1,4,'Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque.',58,34,7),(59,5,4,'quam, elementum at,',59,42,4),(60,1,5,'In lorem. Donec elementum, lorem ut aliquam iaculis,',60,42,1),(61,2,4,'et magnis dis parturient montes, nascetur ridiculus mus. Proin',61,48,1),(62,1,1,'nulla. In tincidunt congue',62,63,6),(63,3,2,'Vivamus molestie dapibus ligula. Aliquam erat',63,94,2),(64,1,5,'Morbi neque tellus, imperdiet',64,72,6),(65,5,2,'sociosqu ad litora torquent per conubia nostra, per inceptos',65,65,3),(66,4,4,'nisi nibh lacinia orci, consectetuer euismod',66,98,5),(67,4,3,'luctus ut, pellentesque eget, dictum placerat, augue.',67,83,2),(68,4,5,'pellentesque. Sed dictum. Proin eget odio. Aliquam',68,28,3),(69,5,3,'mauris id',69,30,1),(70,3,4,'nec, imperdiet',70,65,5),(71,2,4,'Proin dolor. Nulla semper tellus id',71,86,8),(72,3,4,'pellentesque eget,',72,10,6),(73,3,2,'dapibus quam quis diam. Pellentesque habitant morbi tristique',73,46,6),(74,1,3,'lorem eu metus.',74,21,6),(75,5,5,'sagittis placerat. Cras dictum',75,82,2),(76,4,5,'Duis a mi',76,82,1),(77,5,4,'id',77,99,8),(78,3,2,'iaculis, lacus',78,41,2),(79,4,3,'vitae erat vel pede blandit congue. In scelerisque scelerisque',79,39,3),(80,4,2,'nisi dictum augue',80,28,6),(81,5,4,'ut odio',81,25,3),(82,3,5,'Donec tempus,',82,56,5),(83,1,1,'et ultrices posuere cubilia',83,55,5),(84,4,4,'Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi',84,75,1),(85,2,4,'taciti sociosqu ad litora torquent per conubia nostra, per',85,50,2),(86,4,1,'semper, dui',86,68,6),(87,4,3,'orci lobortis augue scelerisque mollis. Phasellus libero mauris,',87,83,2),(88,4,2,'varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla',88,25,8),(89,3,2,'in lobortis tellus justo sit amet nulla.',89,22,7),(90,4,3,'nunc',90,65,6),(91,2,5,'Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula',91,49,1),(92,3,5,'ac metus vitae velit',92,47,5),(93,1,1,'venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede',93,64,5),(94,1,2,'lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada',94,70,6),(95,5,2,'mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed',95,21,4),(96,3,2,'urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis',96,35,4),(97,5,2,'Proin vel',97,71,1),(98,5,3,'Etiam laoreet, libero et tristique pellentesque, tellus sem mollis',98,51,2),(99,2,5,'mauris id sapien. Cras dolor dolor,',99,66,3),(100,2,5,'a, scelerisque',100,64,3);
+INSERT INTO `rating` VALUES (1,4,2,'sed dolor. Fusce mi lorem,',1,3,4),(2,1,4,'libero at auctor ullamcorper, nisl arcu',2,84,3),(3,4,3,'sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor,',3,81,6),(4,2,3,'vel est',4,47,6),(5,3,3,'mollis lectus pede et',5,93,8),(6,2,1,'malesuada id,',6,38,1),(7,2,5,'mauris sit amet lorem semper auctor.',7,87,6),(8,5,5,'Maecenas iaculis aliquet diam. Sed diam lorem,',8,19,2),(9,4,4,'lobortis ultrices. Vivamus',9,87,4),(10,3,3,'primis in faucibus',10,27,2),(11,3,3,'enim non nisi. Aenean eget metus. In nec orci. Donec',11,82,8),(12,1,5,'fringilla cursus purus. Nullam scelerisque',12,45,7),(13,4,2,'eros nec tellus. Nunc lectus',13,33,7),(14,2,5,'nibh enim, gravida sit amet,',14,83,8),(15,1,3,'mauris sapien, cursus in, hendrerit consectetuer, cursus et,',15,22,3),(16,2,5,'non, cursus',16,87,8),(17,5,5,'Fusce mollis. Duis sit amet diam',17,32,3),(18,5,1,'Vestibulum ante',18,76,3),(19,5,3,'at pretium aliquet, metus urna convallis erat,',19,59,7),(20,5,3,'sit amet risus.',20,90,7),(21,3,5,'risus. Nulla',21,60,3),(22,2,2,'nonummy ac, feugiat non, lobortis quis, pede.',22,68,8),(23,2,1,'nunc risus varius orci,',23,30,3),(24,5,2,'sem egestas blandit. Nam nulla magna, malesuada',24,72,2),(25,3,1,'facilisis facilisis, magna tellus faucibus leo, in lobortis tellus',25,68,7),(26,5,3,'morbi tristique senectus et netus et malesuada fames ac turpis',26,19,1),(27,5,1,'magna. Cras convallis convallis dolor. Quisque tincidunt',27,6,8),(28,3,1,'varius. Nam',28,49,3),(29,3,1,'eros turpis non enim. Mauris',29,93,2),(30,3,4,'commodo tincidunt nibh. Phasellus nulla.',30,96,6),(31,1,3,'lobortis tellus justo sit',31,32,1),(32,4,1,'Sed eget lacus. Mauris non dui nec urna',32,88,5),(33,1,1,'vehicula',33,23,6),(34,2,5,'nunc sed',34,53,4),(35,5,4,'lacinia. Sed congue, elit sed consequat auctor, nunc',35,30,6),(36,3,3,'est. Mauris eu turpis. Nulla aliquet. Proin velit.',36,64,4),(37,2,2,'Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit',37,21,2),(38,5,3,'tellus. Nunc lectus pede, ultrices a,',38,30,8),(39,5,3,'blandit',39,24,3),(40,3,3,'magna nec quam. Curabitur',40,52,8),(41,4,1,'lorem ipsum sodales purus, in',41,77,1),(42,5,5,'Maecenas libero est, congue a, aliquet vel, vulputate eu,',42,36,4),(43,2,5,'primis in faucibus orci luctus et ultrices',43,39,6),(44,3,4,'quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis.',44,57,2),(45,5,4,'nunc. In at',45,77,4),(46,3,3,'purus.',46,10,3),(47,2,4,'commodo hendrerit. Donec porttitor tellus non magna.',47,69,6),(48,3,5,'porttitor eros nec tellus. Nunc lectus pede, ultrices',48,93,8),(49,4,2,'adipiscing lacus. Ut nec urna',49,2,8),(50,4,4,'gravida mauris ut mi. Duis risus odio, auctor',50,90,1),(51,5,1,'Fusce aliquet magna a neque.',51,73,7),(52,2,3,'dapibus',52,49,1),(53,1,2,'quam. Pellentesque habitant morbi tristique senectus et netus et',53,75,7),(54,2,3,'enim mi tempor lorem, eget mollis lectus',54,6,7),(55,2,2,'blandit mattis. Cras eget',55,70,1),(56,3,1,'lobortis risus. In mi pede,',56,86,1),(57,4,5,'lorem tristique aliquet.',57,15,6),(58,1,4,'Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque.',58,34,7),(59,5,4,'quam, elementum at,',59,42,4),(60,1,5,'In lorem. Donec elementum, lorem ut aliquam iaculis,',60,42,1),(61,2,4,'et magnis dis parturient montes, nascetur ridiculus mus. Proin',61,48,1),(62,1,1,'nulla. In tincidunt congue',62,63,6),(63,3,2,'Vivamus molestie dapibus ligula. Aliquam erat',63,94,2),(64,1,5,'Morbi neque tellus, imperdiet',64,72,6),(65,5,2,'sociosqu ad litora torquent per conubia nostra, per inceptos',65,65,3),(66,4,4,'nisi nibh lacinia orci, consectetuer euismod',66,98,5),(67,4,3,'luctus ut, pellentesque eget, dictum placerat, augue.',67,83,2),(68,4,5,'pellentesque. Sed dictum. Proin eget odio. Aliquam',68,28,3),(69,5,3,'mauris id',69,30,1),(70,3,4,'nec, imperdiet',70,65,5),(71,2,4,'Proin dolor. Nulla semper tellus id',71,86,8),(72,3,4,'pellentesque eget,',72,10,6),(73,3,2,'dapibus quam quis diam. Pellentesque habitant morbi tristique',73,46,6),(74,1,3,'lorem eu metus.',74,21,6),(75,5,5,'sagittis placerat. Cras dictum',75,82,2),(76,4,5,'Duis a mi',76,82,1),(78,3,2,'iaculis, lacus',78,41,2),(79,4,3,'vitae erat vel pede blandit congue. In scelerisque scelerisque',79,39,3),(80,4,2,'nisi dictum augue',80,28,6),(81,5,4,'ut odio',81,25,3),(82,3,5,'Donec tempus,',82,56,5),(83,1,1,'et ultrices posuere cubilia',83,55,5),(84,4,4,'Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi',84,75,1),(85,2,4,'taciti sociosqu ad litora torquent per conubia nostra, per',85,50,2),(86,4,1,'semper, dui',86,68,6),(87,4,3,'orci lobortis augue scelerisque mollis. Phasellus libero mauris,',87,83,2),(88,4,2,'varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla',88,25,8),(89,3,2,'in lobortis tellus justo sit amet nulla.',89,22,7),(90,4,3,'nunc',90,65,6),(91,2,5,'Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula',91,49,1),(92,3,5,'ac metus vitae velit',92,47,5),(93,1,1,'venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede',93,64,5),(94,1,2,'lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada',94,70,6),(95,5,2,'mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed',95,21,4),(96,3,2,'urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis',96,35,4),(97,5,2,'Proin vel',97,71,1),(98,5,3,'Etiam laoreet, libero et tristique pellentesque, tellus sem mollis',98,51,2),(99,2,5,'mauris id sapien. Cras dolor dolor,',99,66,3),(100,2,5,'a, scelerisque',100,64,3),(103,0,5,'Food was soggy, good driver!',77,77,5),(104,NULL,5,'Food was soggy, good driver!',77,77,5),(105,3,5,'Food was soggy, good driver!',77,77,5);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -431,6 +463,115 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `add_rating` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `add_rating`(IN order_id INT, IN restaurant_score TINYINT, IN driver_score TINYINT, IN comment VARCHAR(255))
+BEGIN
+	INSERT INTO rating (order_id, restaurant_score, driver_score, `comment`, restaurant_id, driver_id)
+    VALUES(order_id, restaurant_score, driver_score, `comment`, (SELECT restaurant_id FROM `order` WHERE `order`.order_id = order_id) , (SELECT driver_id FROM `order` WHERE `order`.order_id = order_id));
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `calculate_driver_ratings` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `calculate_driver_ratings`()
+BEGIN
+	SELECT rating.driver_id AS 'Driver ID',
+    person.person_name AS 'Driver name',
+    person.person_email AS 'Driver Email',
+    person.cell AS 'Driver Cell',
+    avg(driver_score) AS 'Avg Rating'
+    FROM rating
+    INNER JOIN driver ON driver.driver_id = rating.driver_id
+    INNER JOIN student ON student.student_id = driver.student_id
+    INNER JOIN person ON person.person_id = student.person_id
+    GROUP BY rating.driver_id
+    ORDER BY avg(driver_score) DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `calculate_restaurant_ratings` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `calculate_restaurant_ratings`()
+BEGIN
+	SELECT avg(restaurant_score) AS 'Avg Rating',
+    restaurant_name AS 'Restaurant'
+    FROM rating
+    LEFT JOIN restaurant ON restaurant.restaurant_id = rating.restaurant_id
+    GROUP BY restaurant.restaurant_id
+    ORDER BY avg(restaurant_score) DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Final view structure for view `bad_orders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `bad_orders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `bad_orders` AS select `order`.`total_price` AS `Price`,`rating`.`restaurant_score` AS `Restaurant Rating`,`rating`.`driver_score` AS `Driver Rating`,`person`.`person_name` AS `Driver Name`,`restaurant`.`restaurant_name` AS `Restaurant` from (((((`order` join `rating` on((`rating`.`order_id` = `order`.`order_id`))) join `driver` on((`driver`.`driver_id` = `rating`.`driver_id`))) join `student` on((`student`.`student_id` = `driver`.`student_id`))) join `person` on((`person`.`person_id` = `student`.`person_id`))) join `restaurant` on((`restaurant`.`restaurant_id` = `rating`.`restaurant_id`))) where ((`rating`.`restaurant_score` < 3.0) or (`rating`.`driver_score` < 3.0)) order by `rating`.`driver_score` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `good_orders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `good_orders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `good_orders` AS select `order`.`total_price` AS `Price`,`rating`.`restaurant_score` AS `Restaurant Rating`,`rating`.`driver_score` AS `Driver Rating`,`person`.`person_name` AS `Driver Name`,`restaurant`.`restaurant_name` AS `Restaurant` from (((((`order` join `rating` on((`rating`.`order_id` = `order`.`order_id`))) join `driver` on((`driver`.`driver_id` = `rating`.`driver_id`))) join `student` on((`student`.`student_id` = `driver`.`student_id`))) join `person` on((`person`.`person_id` = `student`.`person_id`))) join `restaurant` on((`restaurant`.`restaurant_id` = `rating`.`restaurant_id`))) where ((`rating`.`restaurant_score` > 3.0) and (`rating`.`driver_score` > 3.0)) order by `rating`.`driver_score` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `person_join`
@@ -477,4 +618,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-06 16:23:44
+-- Dump completed on 2020-12-15 23:55:48
