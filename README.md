@@ -85,4 +85,4 @@ This view shows all orders with a driver and restaurant score above 3.0. It incl
 This implementation of the ratings table uses foreign keys for the order id, restaurant id, and driver id. These allow for flexible usage of the ratings table and for complex relationships to exist between restaruants, ratings, orders, and drivers. If a driver or restaurant is removed, the ratings will stay attached to the order. This allows for a better historical record of rating data. This also allows for optimized queries because ratings can be linked directly to drivers or restaurants. This makes getting ratings for restaurants simple and less expensive because no joins need to be performed. This also allows old order data to be purged while retaining the ratings associated with that order. We believe that this rating implementation creates a flexible system at the cost of a few redundant data points.
 
 ## [Presentation Video](https://youtu.be/hI8hiGJRmmI)
-[PowerPoint Download](https://github.com/aharabedian/database_project/blob/main/3160%20Database%20Project.pptx)
+[PowerPoint Download](https://github.com/aharabedian/database_project/raw/main/3160%20Database%20Project.pptx)
