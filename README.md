@@ -58,3 +58,8 @@ This procedure calculates the average rating for each resturant and displays it 
 This procedure calculates the average rating for each driver. It displays the rating as well as the driver's name and contact information if it can be pulled from the associated person.
 
 ![Calculate Driver Ratings](https://github.com/aharabedian/database_project/blob/main/DRating.png)
+
+### Add Rating
+This procedure adds a rating to an order. It takes the order ID and uses it to look up the fields required to link a rating to the driver and restaurant.
+
+![Add Rating](https://github.com/aharabedian/database_project/blob/main/AddRating.png)
