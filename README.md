@@ -45,6 +45,10 @@ This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 
 ### [Click Here for Full Data Dictionary](https://github.com/aharabedian/database_project/blob/main/data_dictionary.pdf)
 
+### Select Ratings Table
+
+![Select Ratings Table](https://github.com/aharabedian/database_project/blob/main/SelectRating.png)
+
 ## [SQL Dump Script](https://github.com/aharabedian/database_project/blob/main/Updated_Campus_Eats_Data_Dump.sql)
 
 ## Stored Procedures
