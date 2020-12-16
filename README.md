@@ -46,3 +46,15 @@ This is a solo project by **Aaron Harabedian** <aharabed@uncc.edu>
 ### ![Click Here for Full Data Dictionary](https://github.com/aharabedian/database_project/blob/main/data_dictionary.pdf)
 
 ## ![SQL Dump Script](https://github.com/aharabedian/database_project/blob/main/Updated_Campus_Eats_Data_Dump.sql)
+
+## Stored Procedures
+
+### Calculate Resturant Ratings
+This procedure calculates the average rating for each resturant and displays it with the resturant in descending order.
+
+![Calculate Resturant Ratings](https://github.com/aharabedian/database_project/blob/main/RRating.png)
+
+### Calculate Driver Ratings
+This procedure calculates the average rating for each driver. It displays the rating as well as the driver's name and contact information if it can be pulled from the associated person.
+
+![Calculate Driver Ratings](https://github.com/aharabedian/database_project/blob/main/DRating.png)
